@@ -3,6 +3,10 @@
 # Network variables
 # -------------------------------------------------------------
 
+variable "project_name" {
+  description = "Project Name"
+  type        = string
+}
 variable "vpc_cidr" {
   description = "The CIDR range for the VPC"
   type        = string
@@ -31,6 +35,7 @@ variable "vpc_name" {
   type        = string
 
 }
+
 
 # -------------------------------------------------------------
 # Tagging
