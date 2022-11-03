@@ -13,3 +13,20 @@ resource "aws_vpc" "this" {
     var.tags,
   )
 }
+
+###
+# Elastic IP(s) for NAT Gateway(s) 
+# --------------------------------
+# See NAT Gateway(s) for the logic on enable_igw
+###
+resource "aws_eip" "elastic_ip" {
+  count = length(var.public_subnet_cidrs)
+
+  vpc = true
+  tags = merge(
+    {
+      "Name" = "${var.environment}-eks-eip-gateway-az-${count.index + 1}"
+    },
+    var.tags,
+  )
+}
